@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Materi Dasar Gerbang Logika Kelistrikan Otomotif</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 12mm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #0f172a;
+            line-height: 1.3;
+            font-size: 10.5pt;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        h1 {
+            font-size: 16pt;
+            margin: 0 0 4px 0;
+            color: #0f172a;
+            text-transform: uppercase;
+        }
+        p.subtitle {
+            margin: 0;
+            font-size: 10pt;
+            color: #475569;
+            font-weight: bold;
+        }
+        .concept-box {
+            background-color: #f1f5f9;
+            border-left: 4px solid #0284c7;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            font-size: 9.5pt;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 8px;
+            background-color: #ffffff;
+            page-break-inside: avoid;
+        }
+        .card h3 {
+            margin: 0 0 4px 0;
+            font-size: 11pt;
+            color: #0369a1;
+            border-bottom: 1px dashed #cbd5e1;
+            padding-bottom: 3px;
+        }
+        .card p {
+            margin: 3px 0;
+            font-size: 9pt;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6px;
+            font-size: 8.5pt;
+        }
+        th, td {
+            border: 1px solid #94a3b8;
+            padding: 3px;
+            text-align: center;
+        }
+        th {
+            background-color: #e2e8f0;
+            font-weight: bold;
+        }
+        .btn-print {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0284c7;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 11pt;
+        }
+        @media print {
+            .btn-print {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-print" onclick="window.print()">Klik Di Sini Untuk Simpan ke PDF / Cetak</button>
+
+    <div class="header">
+        <h1>Materi Dasar Gerbang Logika</h1>
+        <p class="subtitle">Aplikasi Sistem Digital pada Kelistrikan Sepeda Motor (TSM)</p>
+    </div>
+
+    <div class="concept-box">
+        <strong>Konsep Penting Logika Biner Otomotif:</strong>
+        <br>• <strong>Nilai 1 (HIGH):</strong> Sakelar Tertutup / ON / Ada Arus Listrik / Komponen Aktif.
+        <br>• <strong>Nilai 0 (LOW):</strong> Sakelar Terbuka / OFF / Arus Terputus / Komponen Mati.
+    </div>
+
+    <div class="grid">
+        <!-- Gerbang AND -->
+        <div class="card">
+            <h3>1. AND (Seri) - Kelompok 1</h3>
+            <p><strong>Aturan:</strong> Output 1 HANYA JIKA semua input 1.</p>
+            <p><strong>Analogi TSM:</strong> Kunci Kontak AND Tombol Starter.</p>
+            <table>
+                <tr><th>Input A</th><th>Input B</th><th>Output (Y)</th></tr>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td><strong>1 (ON)</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- Gerbang OR -->
+        <div class="card">
+            <h3>2. OR (Paralel) - Kelompok 2</h3>
+            <p><strong>Aturan:</strong> Output 1 JIKA salah satu/semua input 1.</p>
+            <p><strong>Analogi TSM:</strong> Rem Depan OR Rem Belakang.</p>
+            <table>
+                <tr><th>Input A</th><th>Input B</th><th>Output (Y)</th></tr>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td><strong>1 (ON)</strong></td></tr>
+                <tr><td>1</td><td>0</td><td><strong>1 (ON)</strong></td></tr>
+                <tr><td>1</td><td>1</td><td><strong>1 (ON)</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- Gerbang NOT -->
+        <div class="card">
+            <h3>3. NOT (Inverter) - Kelompok 3</h3>
+            <p><strong>Aturan:</strong> Membalikkan nilai input (1 input).</p>
+            <p><strong>Analogi TSM:</strong> Standar Samping (Pengaman).</p>
+            <table>
+                <tr><th>Input A (Standar)</th><th>Output Y (Pengapian)</th></tr>
+                <tr><td>0 (Naik / Aman)</td><td><strong>1 (Mesin Hidup)</strong></td></tr>
+                <tr><td>1 (Turun / Bahaya)</td><td>0 (Mesin Mati)</td></tr>
+            </table>
+        </div>
+
+        <!-- Gerbang XOR -->
+        <div class="card">
+            <h3>4. XOR (Exclusive OR) - Kelompok 4</h3>
+            <p><strong>Aturan:</strong> Output 1 JIKA nilai input BERBEDA.</p>
+            <p><strong>Analogi TSM:</strong> Sakelar Sen Kiri vs Sen Kanan.</p>
+            <table>
+                <tr><th>Input A</th><th>Input B</th><th>Output (Y)</th></tr>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td><strong>1 (ON)</strong></td></tr>
+                <tr><td>1</td><td>0</td><td><strong>1 (ON)</strong></td></tr>
+                <tr><td>1</td><td>1</td><td>0</td></tr>
+            </table>
+        </div>
+
+        <!-- 3-Input AND -->
+        <div class="card">
+            <h3>5. 3-Input AND - Kelompok 5</h3>
+            <p><strong>Aturan:</strong> Ketiga sakelar harus bernilai 1.</p>
+            <p><strong>Analogi TSM:</strong> Safety Starter Matik (Kunci + Rem + Starter).</p>
+            <table>
+                <tr><th>Kunci (A)</th><th>Rem (B)</th><th>Tombol (C)</th><th>Output (Y)</th></tr>
+                <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td><td><strong>1 (ON)</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- Gerbang NAND & NOR -->
+        <div class="card">
+            <h3>6 & 7. NAND & NOR - Kelompok 6 & 7</h3>
+            <p><strong>NAND:</strong> Kebalikan AND (Modul Alarm).</p>
+            <p><strong>NOR:</strong> Kebalikan OR (Headlamp AHO).</p>
+            <table>
+                <tr><th>Input A</th><th>Input B</th><th>NAND</th><th>NOR</th></tr>
+                <tr><td>0</td><td>0</td><td><strong>1</strong></td><td><strong>1</strong></td></tr>
+                <tr><td>1</td><td>0</td><td><strong>1</strong></td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
